@@ -25,7 +25,7 @@
         </div>
         <div class="col-9">
             <div name="currentDay">
-                <h2>Today's weather:</h2>
+                <h2>Today's weather: <span id="current-date"></span></h2>
                 <p>Temperature: <span id="current-data"></span></p>
                 <p>Wind: <span id="current-wind"></span></p>
                 <p>Humidity: <span id="current-humidity"></span></p>
@@ -35,48 +35,48 @@
                 <h3>5-Day Forecast:</h3>
                 <div class="row">
                     <div class="col">
-                        <h4>Day 2</h4>
-                        <p>Temperature: </p>
+                        <h4><span id="daytwo-date"></span></h4>
+                        <h5>Temperature: </h5>
                         <span id="daytwo-temp"></span>
-                        <p>Wind: </p>
+                        <h5>Wind: </h5>
                         <span id="daytwo-wind"></span>
-                        <p>Humidity: </p>
+                        <h5>Humidity: </h5>
                         <span id="daytwo-humidity"></span>
                     </div>
                     <div class="col">
-                        <h4>Day 3</h4>
-                        <p>Temperature: </p>
+                        <h4><span id="daythree-date"></span></h4>
+                        <h5>Temperature: </h5>
                         <span id="daythree-temp"></span>
-                        <p>Wind: </p>
+                        <h5>Wind: </h5>
                         <span id="daythree-wind"></span>
-                        <p>Humidity: </p>
+                        <h5>Humidity: </h5>
                         <span id="daythree-humidity"></span>
                     </div>
                     <div class="col">
-                        <h4>Day 4</h4>
-                        <p>Temperature: </p>
+                        <h4><span id="dayfour-date"></span></h4>
+                        <h5>Temperature: </h5>
                         <span id="dayfour-temp"></span>
-                        <p>Wind: </p>
+                        <h5>Wind: </h5>
                         <span id="dayfour-wind"></span>
-                        <p>Humidity: </p>
+                        <h5>Humidity: </h5>
                         <span id="dayfour-humidity"></span>
                     </div>
                     <div class="col">
-                        <h4>Day 5</h4>
-                        <p>Temperature: </p>
+                        <h4><span id="dayfive-date"></span></h4>
+                        <h5>Temperature: </h5>
                         <span id="dayfive-temp"></span>
-                        <p>Wind: </p>
+                        <h5>Wind: </h5>
                         <span id="dayfive-wind"></span>
-                        <p>Humidity: </p>
+                        <h5>Humidity: </h5>
                         <span id="dayfive-humidity"></span>
                     </div>
                     <div class="col">
-                        <h4>Day 6</h4>
-                        <p>Temperature: </p>
+                        <h4><span id="daysix-date"></span></h4>
+                        <h5>Temperature: </h5>
                         <span id="daysix-temp"></span>
-                        <p>Wind: </p>
+                        <h5>Wind: </h5>
                         <span id="daysix-wind"></span>
-                        <p>Humidity: </p>
+                        <h5>Humidity: </h5>
                         <span id="daysix-humidity"></span>
                     </div>
                 </div>
@@ -90,7 +90,11 @@
     Thanks for visiting!
 
 </footer>
-<script src = "assets/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.5/dayjs.min.js" 
+integrity="sha512-n6mJ6AqoohFfbgx3x7N162B/zRNs5x8uvsStlHC+LCvqwKW7oiucE07Ehatg62ybx6Vo1ctaZwm/4sSRUTSIQA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src = "assets/js/script.js"></script>
 </body>
 </html>

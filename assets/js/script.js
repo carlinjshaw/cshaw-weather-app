@@ -14,6 +14,7 @@ var formSubmitHandler = function(event) {
         cityLocation(userValue);
         nameInputEl.value = '';
         }
+
   };
 //calling the previous function and assing a listener to the "submit" type in the form
 userFormEl.addEventListener("submit", formSubmitHandler);
@@ -36,7 +37,8 @@ var cityLocation = function (city) {
         var latitude = data.coord.lat;
         var longitude = data.coord.lon;
         var coordinate = "lat=" + latitude + "&lon=" + longitude;
-        forecast(coordinate);
+        var cityName = data.name
+        forecast(coordinate, cityName);
       });
     } else {
       alert("please enter a city name");
@@ -49,7 +51,7 @@ var cityLocation = function (city) {
 
 
 //one call weather API
-var forecast = function (location) {
+var forecast = function (location, cityName) {
   // location = "lat=33.44&lon=-94.04"
   var secondAPiUrl =
     "https://api.openweathermap.org/data/2.5/onecall?" +
@@ -89,13 +91,21 @@ var forecast = function (location) {
             " ℉ Low: " + JSON.stringify(data.daily[4].temp.min) + " ℉";
         var daysixWind = JSON.stringify(data.daily[4].wind_speed);
         var daysixHum = JSON.stringify(data.daily[4].humidity);
-        
+
+
         createContent(currentTemp, currentWind, currentHum, currentUvi, 
             daytwoTemp, daytwoWind, daytwoHum,
             daythreeTemp, daythreeWind, daythreeHum,
             dayfourTemp, dayfourWind, dayfourHum,
             dayfiveTemp, dayfiveWind, dayfiveHum,
             daysixTemp, daysixWind, daysixHum)
+
+            storeLocal(currentTemp, currentWind, currentHum, currentUvi, 
+                daytwoTemp, daytwoWind, daytwoHum,
+                daythreeTemp, daythreeWind, daythreeHum,
+                dayfourTemp, dayfourWind, dayfourHum,
+                dayfiveTemp, dayfiveWind, dayfiveHum,
+                daysixTemp, daysixWind, daysixHum, cityName)
       });
     }
   });
@@ -136,3 +146,26 @@ console.log(temp)
 };
 
 
+var dates = function (){
+    var currentDate = dayjs().format('dddd MMM D')
+    console.log(currentDate)
+    $("#current-date").text(currentDate)
+    $("#daytwo-date").text(dayjs().add(1, 'day').format('ddd D / M'))
+    $("#daythree-date").text(dayjs().add(2, 'day').format('ddd D / M'))
+    $("#dayfour-date").text(dayjs().add(3, 'day').format('ddd D / M'))
+    $("#dayfive-date").text(dayjs().add(4, 'day').format('ddd D / M'))
+    $("#daysix-date").text(dayjs().add(5, 'day').format('ddd D / M'))
+
+}
+dates()
+
+function storeLocal (temp, wind, humidity, uvi, 
+    d2Temp,d2Wind, d2Hum,
+    d3Temp,d3Wind, d3Hum,
+    d4Temp, d4Wind, d4Hum,
+    d5Temp, d5Wind, d5Hum,
+    d6Temp, d6Wind, d6Hum, cityName) {
+    console.log(cityName)
+    Key = cityName
+    localStorage.setItem(Key,temp)
+}

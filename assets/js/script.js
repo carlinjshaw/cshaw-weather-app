@@ -1,4 +1,19 @@
 
+var cityNames = JSON.parse(localStorage.getItem("cities")) || []
+
+function createCities () {
+$("#city-names").empty()
+cityNames.forEach((cityName)=> {
+  var cityButton = $("<button>").text(cityName)
+
+  cityButton.on("click", () => {
+cityLocation(cityName)
+  })
+
+$("#city-names").append(cityButton)
+$("#city-names").addClass("buttons")
+})
+}
 
 //form stuff
 // variable to represent IDs in the html
@@ -100,12 +115,7 @@ var forecast = function (location, cityName) {
             dayfiveTemp, dayfiveWind, dayfiveHum,
             daysixTemp, daysixWind, daysixHum)
 
-            storeLocal(currentTemp, currentWind, currentHum, currentUvi, 
-                daytwoTemp, daytwoWind, daytwoHum,
-                daythreeTemp, daythreeWind, daythreeHum,
-                dayfourTemp, dayfourWind, dayfourHum,
-                dayfiveTemp, dayfiveWind, dayfiveHum,
-                daysixTemp, daysixWind, daysixHum, cityName)
+            storeLocal(cityName)
       });
     }
   });
@@ -159,13 +169,17 @@ var dates = function (){
 }
 dates()
 
-function storeLocal (temp, wind, humidity, uvi, 
-    d2Temp,d2Wind, d2Hum,
-    d3Temp,d3Wind, d3Hum,
-    d4Temp, d4Wind, d4Hum,
-    d5Temp, d5Wind, d5Hum,
-    d6Temp, d6Wind, d6Hum, cityName) {
+function storeLocal (cityName) {
     console.log(cityName)
-    Key = cityName
-    localStorage.setItem(Key,temp)
+
+    if (cityNames.includes(cityName)){
+      console.log("city already exists!")
+    } else {
+
+    cityNames.push(cityName)
+    localStorage.setItem("cities", JSON.stringify(cityNames))
+    createCities()
+    }
 }
+
+createCities()
